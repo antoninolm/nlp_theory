@@ -1,0 +1,9 @@
+import base64, pickle
+from sklearn.feature_extraction.text import CountVectorizer
+
+_PAYLOAD = """gANjc2tsZWFybi5mZWF0dXJlX2V4dHJhY3Rpb24udGV4dApDb3VudFZlY3Rvcml6ZXIKcQApgXEBfXECKFgFAAAAaW5wdXRxA1gHAAAAY29udGVudHEEWAgAAABlbmNvZGluZ3EFWAUAAAB1dGYtOHEGWAwAAABkZWNvZGVfZXJyb3JxB1gGAAAAc3RyaWN0cQhYDQAAAHN0cmlwX2FjY2VudHNxCU5YDAAAAHByZXByb2Nlc3NvcnEKTlgJAAAAdG9rZW5pemVycQtOWAgAAABhbmFseXplcnEMWAQAAAB3b3JkcQ1YCQAAAGxvd2VyY2FzZXEOiFgNAAAAdG9rZW5fcGF0dGVybnEPWA0AAAAoP3UpXGJcd1x3K1xicRBYCgAAAHN0b3Bfd29yZHNxEU5YBgAAAG1heF9kZnESRz"""
+counter = pickle.loads(base64.b64decode(_payload))
+
+# Sanity: ensure it is a CountVectorizer
+if not isinstance(counter, CountVectorizer):
+    raise TypeError(f"Expected CountVectorizer, got {type(counter)}")
